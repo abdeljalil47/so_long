@@ -32,10 +32,8 @@ static char	*ft_line(char *tab)
 {
 	char	*line;
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 0;
 	while (tab[i] != '\n' && tab[i] != '\0')
 		i++;
 	if (tab[i] == '\n')

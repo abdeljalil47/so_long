@@ -18,6 +18,9 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <stdbool.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10

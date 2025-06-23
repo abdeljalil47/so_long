@@ -27,10 +27,10 @@ t_long	*create_2d_array(char *tmp, int i)
 	game_map->map = ft_split(tmp, '\n');
 	if (game_map->map == NULL)
 		return ((free(game_map), free(game)), NULL);
-	if (!ft_check_map1_bup(game_map->map) || !ft_check_walls(game_map->map, i)
-		|| !ft_are_lineequal(game_map->map))
-		return ((ft_free(game_map->map, game, game_map),
-				error_print("Map not valide\n")), NULL);
+	// if (!ft_check_map1_bup(game_map->map) || !ft_check_walls(game_map->map, i)
+	// 	|| !ft_are_lineequal(game_map->map))
+	// 	return ((ft_free(game_map->map, game, game_map),
+	// 			error_print("Map not valide\n")), NULL);
 	game_map->width = count_map(game_map->map);
 	game_map->height = i;
 	if (!ft_handle_map(game))

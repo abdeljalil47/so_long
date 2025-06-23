@@ -18,7 +18,7 @@ int	create_window(t_long *game_map, int width, int height, t_data *game)
 	game->move = 0;
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
-		return ((write(1, "MinilibX initialization failed\n", 34)), 0);
+		return ((write(1, "MinilibX initialization failed\n", 32)), 0);
 	game->mlx_screen = mlx_new_window(game->mlx, width * 50,
 			height * 50, "so_long");
 	if (!game->mlx_screen)
@@ -26,7 +26,7 @@ int	create_window(t_long *game_map, int width, int height, t_data *game)
 	if (!ft_put_texture(game_map->map, game->mlx, game))
 		return (close_window(game), 0);
 	make_background(width, height, game);
-	mlx_hook(game->mlx_screen, 2, 0, &key_hook, game);
+	mlx_hook(game->mlx_screen, KeyPress, KeyPressMask, &key_hook, game);
 	mlx_hook(game->mlx_screen, 17, 0, &close_window, game);
 	mlx_loop(game->mlx);
 	return (1);
@@ -55,7 +55,7 @@ void	move_player(t_data *game_data, int delta_y, int delta_x)
 
 void	left(int keycode, t_data *game_data, int prev_y, int prev_x)
 {
-	if (keycode == 123 || keycode == 0)
+	if (keycode == 123 || keycode == 0 || keycode == 65361)
 	{
 		if (finish(prev_x - 1, prev_y, game_data))
 			return (finish_game(game_data));
@@ -68,7 +68,7 @@ void	left(int keycode, t_data *game_data, int prev_y, int prev_x)
 			move_player(game_data, 0, -1);
 		}
 	}
-	else if (keycode == 126 || keycode == 13)
+	else if (keycode == 126 || keycode == 13 || keycode == 65362)
 	{
 		if (finish(prev_x, prev_y - 1, game_data))
 			return (finish_game(game_data));
@@ -85,7 +85,7 @@ void	left(int keycode, t_data *game_data, int prev_y, int prev_x)
 void	ft_move_player(int keycode, t_data *game_data, int prev_y, int prev_x)
 {
 	left(keycode, game_data, prev_y, prev_x);
-	if (keycode == 125 || keycode == 1)
+	if (keycode == 125 || keycode == 1 || keycode == 65364)
 	{
 		if (finish(prev_x, prev_y + 1, game_data))
 			return (finish_game(game_data));
@@ -97,7 +97,7 @@ void	ft_move_player(int keycode, t_data *game_data, int prev_y, int prev_x)
 			move_player(game_data, 1, 0);
 		}
 	}
-	else if (keycode == 124 || keycode == 2)
+	else if (keycode == 124 || keycode == 2 || keycode == 65363)
 	{
 		if (finish(prev_x + 1, prev_y, game_data))
 			return (finish_game(game_data));
